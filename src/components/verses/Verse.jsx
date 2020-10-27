@@ -13,6 +13,7 @@ const Verse = (props) => {
     }
     
     const colSize = props.item_count === 1 ? 12 : 4;
+    
 
     return (
       <>
