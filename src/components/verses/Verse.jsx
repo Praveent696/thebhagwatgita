@@ -8,12 +8,12 @@ const Verse = (props) => {
     // eslint-disable-next-line no-unused-vars
     let { goTo } = useNavigation();
     const onVerseClick = (chapter_number,verse_number) =>{
-        let url=`/verses?chapter_number=${chapter_number}&verse_number=${verse_number}`;
-        window.location.href=url;
+        let url=`/chapter/${chapter_number}/verses/${verse_number}`;
+        goTo(url);
     }
     
     const colSize = props.item_count === 1 ? 12 : 4;
-    
+
 
     return (
       <>

@@ -7,7 +7,7 @@ const Chapter = (props) => {
     let { goTo } = useNavigation();
     const onChapterClick = (chapter_number) => {
     
-        let url=`/verses?chapter_number=${chapter_number}`;
+        let url=`/chapter/${chapter_number}/verses`;
         goTo(url);
     }
 

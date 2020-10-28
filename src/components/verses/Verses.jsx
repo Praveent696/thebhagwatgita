@@ -2,18 +2,17 @@ import React from 'react';
 import verses_dummy from '../../dummy/verses';
 import Verse from '../verses/Verse';
 import { Row } from 'react-bootstrap';
-import useQuery from '../../hooks/useQuery';
+import { useParams } from 'react-router-dom';
 
 
 const Verses = () => {
-    let query = useQuery();
     const [verses, setVerses] = React.useState(verses_dummy);
-    const [verseNumber ,  ] = React.useState(query.get('verse_number'))
-    const [chapterNumber ,  ] = React.useState(query.get('chapter_number'))
-    
-      
+
+    let { chapter_number : chapterNumber , verse_number: verseNumber } = useParams();
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
     React.useEffect(()=>{
+        
         let filter_verses = verses_dummy.verses;
         if(chapterNumber)
         {
@@ -27,7 +26,7 @@ const Verses = () => {
         }
         setVerses({verses:filter_verses})
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[]);
+    },[chapterNumber,verseNumber]);
 
     
 
