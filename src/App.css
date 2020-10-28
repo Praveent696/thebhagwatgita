@@ -2,3 +2,9 @@
   background: black no-repeat;
   min-height: 768px;
 }
+.custom-card-title{
+  background: black;
+  color: white;
+  border-radius: 60px;
+  padding: 7px;
+}
