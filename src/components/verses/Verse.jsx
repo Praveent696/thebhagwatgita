@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card , Col , Badge } from 'react-bootstrap';
+import { Card , Col, Alert } from 'react-bootstrap';
 import useNavigation from '../../hooks/useNavigation';
 
 
@@ -12,21 +12,39 @@ const Verse = (props) => {
         goTo(url);
     }
     
-    const colSize = props.item_count === 1 ? 12 : 4;
+    let colSize = props.item_count === 1 ? 12 : 4;
+
+    if(colSize === 4 && props.item_count === 2 )
+    {
+       colSize = 6;
+    }
 
 
     return (
       <>
         
         <Col md={colSize} style={{marginTop:'20px',marginBottom:'20px'}}>
-                <Card key={`verse_${props.verse_number}`} style={{backgroundColor:'#f2d0e5',textAlign:'center'}} onClick={(event) => onVerseClick(props.chapter_number,props.verse_number)}>
+                <Card key={`verse_${props.verse_number}`} style={{backgroundColor:'#f2d0e5',textAlign:'center'}}  onClick={(event) => onVerseClick(props.chapter_number,props.verse_number)}>
                     <Card.Body>
-                        <Card.Title>Verses {props.verse_number}<Badge style={{float:'right'}} variant="info">Chapter {props.chapter_number}</Badge> </Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">{props.text}</Card.Subtitle>
+                        <Card.Title className='custom-card-title'>{props.text}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">Verse {props.verse_number}</Card.Subtitle>
                         <Card.Text>
-                            <p>{props.transliteration}</p>
-                            <p>{props.word_meanings}</p>
-                            <p>{props.meaning}</p>
+                        <Alert variant="dark">
+                            <p className="mb-0">
+                               <Alert.Heading>Transliteration</Alert.Heading>
+                               {props.transliteration}
+                            </p>
+                            <hr />
+                            <p className="mb-0">
+                               <Alert.Heading>Word by word meaning</Alert.Heading>
+                               {props.word_meanings}
+                            </p>
+                            <hr />
+                            <p className="mb-0">
+                               <Alert.Heading>Meaning</Alert.Heading>
+                               {props.meaning}
+                            </p>
+                        </Alert>
                         </Card.Text>
                     </Card.Body>
                 </Card>
