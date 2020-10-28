@@ -33,7 +33,7 @@ const NavigationMenu = (props) => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
-                    <Nav>
+                    <Nav> 
                         <Link to="/" style={LinkStyle}>Chapters</Link>
                         <Link to="/verses" style={LinkStyle}>Verses</Link> 
                     </Nav>
