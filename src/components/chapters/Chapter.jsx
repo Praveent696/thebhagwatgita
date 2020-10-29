@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card , Col, Button } from 'react-bootstrap';
+import { Card , Col, Button, Alert } from 'react-bootstrap';
 import useNavigation from '../../hooks/useNavigation';
 
 const Chapter = (props) => {
@@ -18,10 +18,24 @@ const Chapter = (props) => {
                 <Card key={`chapter_${props.chapter_number}`} style={{backgroundColor:'#f2d0e5',textAlign:'center'}}>
                     <Card.Body>
                         <Card.Title className="custom-card-title">{props.name} </Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">{props.name_transliterated}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}</Card.Subtitle>
                         <Card.Text>
-                            <p>{props.name_english}</p>
-                            <span>{props.name_transliterated_simple}</span>
+                            <Alert variant="dark">
+                                <p className="mb-0">
+                                <Alert.Heading>Name english</Alert.Heading>
+                                  {props.name_english}
+                                </p>
+                                <hr />
+                                <p className="mb-0">
+                                <Alert.Heading>Name transliterated simple</Alert.Heading>
+                                  {props.name_transliterated_simple}
+                                </p>
+                                <hr />
+                                <p className="mb-0">
+                                <Alert.Heading>Transliterated</Alert.Heading>
+                                  {props.name_transliterated}
+                                </p>
+                            </Alert>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>

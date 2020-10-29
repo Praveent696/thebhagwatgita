@@ -27,7 +27,7 @@ const Verse = (props) => {
                 <Card key={`verse_${props.verse_number}`} style={{backgroundColor:'#f2d0e5',textAlign:'center'}}  onClick={(event) => onVerseClick(props.chapter_number,props.verse_number)}>
                     <Card.Body>
                         <Card.Title className='custom-card-title'>{props.text}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">Verse {props.verse_number}</Card.Subtitle>
+                        <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}, Verse {props.verse_number}</Card.Subtitle>
                         <Card.Text>
                         <Alert variant="dark">
                             <p className="mb-0">
