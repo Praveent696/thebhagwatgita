@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card , Col, Button, Alert } from 'react-bootstrap';
+import { Card , Col, Button } from 'react-bootstrap';
 import useNavigation from '../../hooks/useNavigation';
+import AlertDiv from '../common/AlertDiv';
 
 const Chapter = (props) => {
 
@@ -9,6 +10,23 @@ const Chapter = (props) => {
     
         let url=`/chapter/${chapter_number}/verses`;
         goTo(url);
+    }
+
+    const alertDivProps = {
+        paragraphs : [
+            {
+                header: 'Name english',
+                body : props.name_english
+            },
+            {
+                header: 'Name transliterated simple',
+                body : props.name_transliterated_simple
+            },
+            {
+                header: 'Transliterated',
+                body : props.name_transliterated
+            }
+        ]
     }
 
     return (
@@ -20,22 +38,7 @@ const Chapter = (props) => {
                         <Card.Title className="custom-card-title">{props.name} </Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}</Card.Subtitle>
                         <Card.Text>
-                            <Alert variant="dark">
-                                <p className="mb-0">
-                                <Alert.Heading>Name english</Alert.Heading>
-                                  {props.name_english}
-                                </p>
-                                <hr />
-                                <p className="mb-0">
-                                <Alert.Heading>Name transliterated simple</Alert.Heading>
-                                  {props.name_transliterated_simple}
-                                </p>
-                                <hr />
-                                <p className="mb-0">
-                                <Alert.Heading>Transliterated</Alert.Heading>
-                                  {props.name_transliterated}
-                                </p>
-                            </Alert>
+                            <AlertDiv {...alertDivProps}/>
                         </Card.Text>
                     </Card.Body>
                     <Card.Footer>
