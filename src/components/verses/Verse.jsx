@@ -1,6 +1,7 @@
 import React from 'react';
-import { Card , Col, Alert } from 'react-bootstrap';
+import { Card , Col } from 'react-bootstrap';
 import useNavigation from '../../hooks/useNavigation';
+import AlertDiv from '../common/AlertDiv';
 
 
 const Verse = (props) => {
@@ -19,37 +20,37 @@ const Verse = (props) => {
        colSize = 6;
     }
 
+    const alertDivProps = {
+        paragraphs : [
+            {
+                header: 'Transliteration',
+                body : props.transliteration
+            },
+            {
+                header: 'Word by word meaning',
+                body : props.word_meanings
+            },
+            {
+                header: 'Meaning',
+                body : props.meaning
+            }
+        ]
+    }
+
 
     return (
       <>
-        
         <Col md={colSize} style={{marginTop:'20px',marginBottom:'20px'}}>
                 <Card key={`verse_${props.verse_number}`} style={{backgroundColor:'#ccc',textAlign:'center'}}  onClick={(event) => onVerseClick(props.chapter_number,props.verse_number)}>
                     <Card.Body>
                         <Card.Title className='custom-card-title'>{props.text}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}, Verse {props.verse_number}</Card.Subtitle>
                         <Card.Text>
-                        <Alert variant="dark">
-                            <p className="mb-0">
-                               <Alert.Heading>Transliteration</Alert.Heading>
-                               {props.transliteration}
-                            </p>
-                            <hr />
-                            <p className="mb-0">
-                               <Alert.Heading>Word by word meaning</Alert.Heading>
-                               {props.word_meanings}
-                            </p>
-                            <hr />
-                            <p className="mb-0">
-                               <Alert.Heading>Meaning</Alert.Heading>
-                               {props.meaning}
-                            </p>
-                        </Alert>
+                            <AlertDiv {...alertDivProps} />
                         </Card.Text>
                     </Card.Body>
                 </Card>
-            </Col>
-        
+        </Col>
       </>
     )
 }
