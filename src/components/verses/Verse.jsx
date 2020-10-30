@@ -24,7 +24,7 @@ const Verse = (props) => {
       <>
         
         <Col md={colSize} style={{marginTop:'20px',marginBottom:'20px'}}>
-                <Card key={`verse_${props.verse_number}`} style={{backgroundColor:'#f2d0e5',textAlign:'center'}}  onClick={(event) => onVerseClick(props.chapter_number,props.verse_number)}>
+                <Card key={`verse_${props.verse_number}`} style={{backgroundColor:'#ccc',textAlign:'center'}}  onClick={(event) => onVerseClick(props.chapter_number,props.verse_number)}>
                     <Card.Body>
                         <Card.Title className='custom-card-title'>{props.text}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}, Verse {props.verse_number}</Card.Subtitle>
