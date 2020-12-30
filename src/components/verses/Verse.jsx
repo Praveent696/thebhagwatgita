@@ -45,9 +45,9 @@ const Verse = (props) => {
                     <Card.Body>
                         <Card.Title className='custom-card-title'>{props.text}</Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}, Verse {props.verse_number}</Card.Subtitle>
-                        <Card.Text>
-                            <AlertDiv {...alertDivProps} />
-                        </Card.Text>
+                        <Card.Body>
+                            <AlertDiv key={new Date()} {...alertDivProps} />
+                        </Card.Body>
                     </Card.Body>
                 </Card>
         </Col>

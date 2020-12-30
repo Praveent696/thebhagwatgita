@@ -1,24 +1,26 @@
 import React from 'react';
-import chapters_dummy from '../../dummy/chapters';
 import Chapter from '../chapters/Chapter';
 import { Row } from 'react-bootstrap';
+import { connect } from "react-redux";
 
-const Chapters = () => {
-    const [chapters, setChapters] = React.useState(chapters_dummy);
-
-    React.useEffect(()=>{
-        setChapters(chapters_dummy)
-    },[])
+const Chapters = (props) => {
+    let chapters = props.chapters
 
     return (
         <Row style={{padding:'20px',marginRight:'0',marginLeft:'0'}}>
           {
-             chapters.chapters.map((item)=>{
-                  return <Chapter {...item}/>
+             chapters.map((item,index)=>{
+                  return <Chapter key={index} {...item}/>
               })
           }
         </Row>
     )
 };
 
-export default Chapters;
+const mapStateToProps = (state) => {
+    return {
+        chapters: state.ch.chapters
+    }
+}
+
+export default connect(mapStateToProps)(Chapters);

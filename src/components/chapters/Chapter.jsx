@@ -37,9 +37,9 @@ const Chapter = (props) => {
                     <Card.Body>
                         <Card.Title className="custom-card-title">{props.name} </Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}</Card.Subtitle>
-                        <Card.Text>
-                            <AlertDiv {...alertDivProps}/>
-                        </Card.Text>
+                        <Card.Body>
+                            <AlertDiv key={new Date()} {...alertDivProps}/>
+                        </Card.Body>
                     </Card.Body>
                     <Card.Footer>
                         <Button onClick={(event) => onChapterClick(props.chapter_number)} variant="dark">Open verses</Button>{' '}

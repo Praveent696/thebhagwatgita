@@ -6,15 +6,12 @@ const AlertDiv = (props) => {
         <>
             <Alert variant="dark">
                 {
-                  props.paragraphs.map(p => {
-                    return (
-                    <>
-                        <p key={`${p.header}_${p.body}`} className="mb-0">
-                            <Alert.Heading>{p.header}</Alert.Heading>
-                            {p.body}
-                        </p>
-                        <hr />
-                    </>
+                  props.paragraphs.map((p , i) => {
+                    return (<div key={i}>
+                                <Alert.Heading key={`alert_heading_${i}`}>{p.header}</Alert.Heading>
+                                {p.body}
+                            <hr key={`hr_${i}`} /> 
+                        </div>
                     )
                   })
                 }
