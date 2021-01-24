@@ -43,6 +43,7 @@ const Chapter = (props) => {
                     </Card.Body>
                     <Card.Footer>
                         <Button onClick={(event) => onChapterClick(props.chapter_number)} variant="dark">Open verses</Button>{' '}
+                        <Button onClick={()=> props.onChangeFavorate(props.chapter_number,true)}>Make Favorate</Button>{' '}
                     </Card.Footer>
                 </Card>
             </Col>

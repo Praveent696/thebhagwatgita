@@ -9,7 +9,6 @@ const Verses = (props) => {
 
     let { chapter_number : chapterNumber , verse_number: verseNumber } = useParams();
     let verses = props.verses;
-    console.log(props)
     if(chapterNumber)
     {
         // eslint-disable-next-line eqeqeq
@@ -33,7 +32,7 @@ const Verses = (props) => {
 
 const mapStateToProps = (state) => {
      return {
-         verses : state.vr.verses
+         verses : state.verses
     }
 }
 
