@@ -47,12 +47,12 @@ export const reducer = ( state = initialState , action ) =>{
     case actionTypes.GET_CHAPTER:
         return [...state.filter(x=>x.chapter_number===action.payload.chapterNumber)]
     case actionTypes.SET_CHAPTER_FAV_STATUS:
-        console.log('state.chapters',state)
          let chapter_to_change = {...state.find(x=>x.chapter_number===action.payload.chapterNumber)};
-
          chapter_to_change.is_favorate = action.payload.isFavorate;
-         //console.log(chapter_to_change)
-         return [...state , chapter_to_change ];
+         state = state.filter(x=>x.chapter_number!==action.payload.chapterNumber)
+         state = [...state,chapter_to_change]
+         state = state.sort((a,b)=> a.chapter_number- b.chapter_number)
+         return [...state];
     default:
         return [...state];   
    } 

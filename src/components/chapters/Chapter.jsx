@@ -33,7 +33,7 @@ const Chapter = (props) => {
       <>
         
             <Col md={4} style={{marginTop:'20px',marginBottom:'20px'}}>
-                <Card key={`chapter_${props.chapter_number}`} style={{backgroundColor:'#ccc',textAlign:'center'}}>
+                <Card key={`chapter_${props.chapter_number}`} style={{backgroundColor: props.is_favorate ?'#ff0023':'#ccc',textAlign:'center'}}>
                     <Card.Body>
                         <Card.Title className="custom-card-title">{props.name} </Card.Title>
                         <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}</Card.Subtitle>
