@@ -9,6 +9,7 @@ const Verse = (props) => {
     // eslint-disable-next-line no-unused-vars
     let { goTo } = useNavigation();
     const onVerseClick = (chapter_number,verse_number) =>{
+        props.onClickVerse(chapter_number,verse_number)
         let url=`/chapter/${chapter_number}/verses/${verse_number}`;
         goTo(url);
     }
@@ -28,11 +29,11 @@ const Verse = (props) => {
             },
             {
                 header: 'Word by word meaning',
-                body : props.word_meanings
+                body : props.siva.ec
             },
             {
                 header: 'Meaning',
-                body : props.meaning
+                body : props.siva.et
             }
         ]
     }
@@ -41,10 +42,10 @@ const Verse = (props) => {
     return (
       <>
         <Col md={colSize} style={{marginTop:'20px',marginBottom:'20px'}}>
-                <Card key={`verse_${props.verse_number}`} style={{backgroundColor:'#ccc',textAlign:'center'}}  onClick={(event) => onVerseClick(props.chapter_number,props.verse_number)}>
+                <Card key={`verse_${props.verse}`} style={{backgroundColor:'#ccc',textAlign:'center'}}  onClick={(event) => onVerseClick(props.chapter,props.verse)}>
                     <Card.Body>
-                        <Card.Title className='custom-card-title'>{props.text}</Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}, Verse {props.verse_number}</Card.Subtitle>
+                        <Card.Title className='custom-card-title'>{props.slok}</Card.Title>
+                        <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter}, Verse {props.verse}</Card.Subtitle>
                         <Card.Body>
                             <AlertDiv key={new Date()} {...alertDivProps} />
                         </Card.Body>

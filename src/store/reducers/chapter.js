@@ -1,47 +1,14 @@
 import * as actionTypes from "../action/actionTypes";
 
 
-let initialState = [
-        {
-            chapter_number: 1, 
-            name: "अर्जुनविषादयोग", 
-            name_english: "Arjuna Dilemma", 
-            name_transliterated: "Arjun Viṣhād Yog", 
-            name_transliterated_simple: "Arjuna Visada Yoga", 
-            verses_count: 47,
-            is_favorate : false
-          }, 
-          {
-            chapter_number: 2, 
-            name: "सांख्ययोग", 
-            name_english: "Transcendental Knowledge", 
-            name_transliterated: "Sānkhya Yog", 
-            name_transliterated_simple: "Sankhya Yoga", 
-            verses_count: 72,
-            is_favorate : false
-          },
-          {
-            chapter_number: 3, 
-            name: "सांख्ययोग", 
-            name_english: "Transcendental Knowledge", 
-            name_transliterated: "Sānkhya Yog", 
-            name_transliterated_simple: "Sankhya Yoga", 
-            verses_count: 72,
-            is_favorate : false
-          },
-          {
-            chapter_number: 4, 
-            name: "सांख्ययोग", 
-            name_english: "Transcendental Knowledge", 
-            name_transliterated: "Sānkhya Yog", 
-            name_transliterated_simple: "Sankhya Yoga", 
-            verses_count: 72,
-            is_favorate : false
-          }
-];
+let initialState = [];
 
 export const reducer = ( state = initialState , action ) =>{
    switch(action.type){
+    case actionTypes.SET_CHAPTERS:
+        state = action.payload.chapters.sort((a,b)=> a.chapter_number- b.chapter_number)
+        console.log('STATE CHAPTERS',state)
+        return [...state]; 
     case actionTypes.GET_CHAPTERS:
         return [...state];
     case actionTypes.GET_CHAPTER:

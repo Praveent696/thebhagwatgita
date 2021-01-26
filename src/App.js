@@ -3,19 +3,17 @@ import './App.css';
 import NavigationMenu from './components/layout/NavigationMenu';
 // eslint-disable-next-line
 import {Container} from 'react-bootstrap';
-import { createStore , combineReducers , compose } from 'redux';
+import { createStore , combineReducers   , compose, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
 import { reducer as chapterReducer } from './store/reducers/chapter'
 import { reducer as verseReducer } from './store/reducers/verse'
+import thunk from "redux-thunk";
+import logger from "redux-logger";
 
-const enhancers = [];
-const windowIfDefined = typeof window === 'undefined' ? null : window;
-if (windowIfDefined && windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__) {
-    enhancers.push(windowIfDefined.__REDUX_DEVTOOLS_EXTENSION__());
-}
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 const rootReducer = combineReducers({ chapters: chapterReducer , verses : verseReducer });
-const store  = createStore(rootReducer,compose(...enhancers));
+const store  = createStore(rootReducer,composeEnhancers(applyMiddleware(thunk,logger)));
 
 console.log(store)
 

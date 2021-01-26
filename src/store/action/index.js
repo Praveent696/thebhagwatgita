@@ -1,2 +1,2 @@
-export { getChapter , getChapters } from './chapter';
-export { getVerses, getVerse} from './verse';
+export { getChapter , getChapters , makeFavorateChapter , setChapters  } from './chapter';
+export { getVerses, getVerse, setVerses, setVerse} from './verse';

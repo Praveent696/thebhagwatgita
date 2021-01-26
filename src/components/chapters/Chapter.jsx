@@ -7,7 +7,7 @@ const Chapter = (props) => {
 
     let { goTo } = useNavigation();
     const onChapterClick = (chapter_number) => {
-    
+        props.onClickChapter(chapter_number,props.verses_count)
         let url=`/chapter/${chapter_number}/verses`;
         goTo(url);
     }
@@ -15,39 +15,37 @@ const Chapter = (props) => {
     const alertDivProps = {
         paragraphs : [
             {
-                header: 'Name english',
-                body : props.name_english
+                header: 'Meaning English',
+                body : props.meaning.en
             },
             {
-                header: 'Name transliterated simple',
-                body : props.name_transliterated_simple
+                header: 'Meaning Hindi',
+                body : props.meaning.hi
             },
             {
-                header: 'Transliterated',
-                body : props.name_transliterated
+                header: 'Translation',
+                body : props.translation
             }
         ]
     }
 
     return (
       <>
-        
-            <Col md={4} style={{marginTop:'20px',marginBottom:'20px'}}>
-                <Card key={`chapter_${props.chapter_number}`} style={{backgroundColor: props.is_favorate ?'#ff0023':'#ccc',textAlign:'center'}}>
+        <Col md={4} style={{marginTop:'20px',marginBottom:'20px'}} title={`${props.summary.en} (${props.summary.hi})`}>
+            <Card key={`chapter_${props.chapter_number}`} style={{backgroundColor: props.is_favorate ?'#ff0023':'#ccc',textAlign:'center'}}>
+                <Card.Body>
+                    <Card.Title className="custom-card-title">{props.name} </Card.Title>
+                    <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}, Total verses count {props.verses_count}</Card.Subtitle>
                     <Card.Body>
-                        <Card.Title className="custom-card-title">{props.name} </Card.Title>
-                        <Card.Subtitle className="mb-2 text-muted">Chapter {props.chapter_number}</Card.Subtitle>
-                        <Card.Body>
-                            <AlertDiv key={new Date()} {...alertDivProps}/>
-                        </Card.Body>
+                        <AlertDiv key={new Date()} {...alertDivProps}/>
                     </Card.Body>
-                    <Card.Footer>
-                        <Button onClick={(event) => onChapterClick(props.chapter_number)} variant="dark">Open verses</Button>{' '}
-                        <Button onClick={()=> props.onChangeFavorate(props.chapter_number,true)}>Make Favorate</Button>{' '}
-                    </Card.Footer>
-                </Card>
-            </Col>
-        
+                </Card.Body>
+                <Card.Footer>
+                    <Button onClick={(event) => onChapterClick(props.chapter_number)} variant="dark">Open verses</Button>{' '}
+                    <Button onClick={()=> props.onChangeFavorate(props.chapter_number,true)}>Make Favorate</Button>{' '}
+                </Card.Footer>
+            </Card>
+        </Col>
       </>
     )
 }

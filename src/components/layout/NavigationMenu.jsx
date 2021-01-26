@@ -35,7 +35,6 @@ const NavigationMenu = (props) => {
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav> 
                         <Link to="/" style={LinkStyle}>Chapters</Link>
-                        <Link to="/verses" style={LinkStyle}>Verses</Link> 
                     </Nav>
                 </Navbar.Collapse>
             </Navbar>
@@ -44,9 +43,6 @@ const NavigationMenu = (props) => {
                    <Chapters></Chapters>
                 </Route>
                 <Route exact path="/chapter/:chapter_number/verses">
-                    <Verses></Verses>
-                </Route>
-                <Route exact path="/verses">
                     <Verses></Verses>
                 </Route>
                 <Route exact path="/chapter/:chapter_number/verses/:verse_number">
